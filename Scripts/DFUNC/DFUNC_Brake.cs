@@ -150,12 +150,11 @@ namespace SaccFlightAndVehicles
         private void Update()
         {
             float DeltaTime = Time.deltaTime;
+            float Speed = (float)SAVControl.GetProgramVariable("Speed");
             if (IsOwner)
             {
                 if (!Asleep)
                 {
-                    float Speed = (float)SAVControl.GetProgramVariable("Speed");
-                    Vector3 CurrentVel = (Vector3)SAVControl.GetProgramVariable("CurrentVel");
                     bool Taxiing = (bool)SAVControl.GetProgramVariable("Taxiing");
                     if ((bool)SAVControl.GetProgramVariable("Piloting"))
                     {
@@ -209,7 +208,7 @@ namespace SaccFlightAndVehicles
                                 }
                             }
                         }
-                        if (!HasAirBrake && !(bool)SAVControl.GetProgramVariable("Taxiing"))
+                        if (!HasAirBrake && !Taxiing)
                         {
                             BrakeInput = 0;
                         }
@@ -293,7 +292,7 @@ namespace SaccFlightAndVehicles
             if (Airbrake_snd)
             {
                 Airbrake_snd.pitch = AirbrakeLerper * .2f + .9f;
-                Airbrake_snd.volume = AirbrakeLerper * Mathf.Min((float)SAVControl.GetProgramVariable("Speed") * RotMultiMaxSpeedDivider, 1);
+                Airbrake_snd.volume = AirbrakeLerper * Mathf.Min(Speed * RotMultiMaxSpeedDivider, 1);
             }
         }
     }
