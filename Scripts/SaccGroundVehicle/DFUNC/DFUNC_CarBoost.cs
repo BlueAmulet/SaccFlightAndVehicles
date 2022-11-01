@@ -144,7 +144,7 @@ namespace SaccFlightAndVehicles
             if (BoostRemaining != BoostInSeconds)
             {
                 SGVControl.SetProgramVariable("ReSupplied", (int)SGVControl.GetProgramVariable("ReSupplied") + 1);
-                if ((bool)SGVControl.GetProgramVariable("IsOwner"))
+                bool IsOwner_b1 = (bool)SGVControl.GetProgramVariable("IsOwner"); if (IsOwner_b1) /* Avoiding slow copy */
                 {
                     BoostRemaining = Mathf.Min(BoostRemaining + (BoostInSeconds / ResupplyTime), BoostInSeconds);
                     RequestSerialization();
@@ -155,7 +155,7 @@ namespace SaccFlightAndVehicles
         {
             Boosting = 0;
             BoostRemaining = BoostInSeconds;
-            if ((bool)SGVControl.GetProgramVariable("IsOwner"))
+            bool IsOwner_b2 = (bool)SGVControl.GetProgramVariable("IsOwner"); if (IsOwner_b2) /* Avoiding slow copy */
             {
                 RequestSerialization();
             }

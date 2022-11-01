@@ -202,7 +202,7 @@ namespace SaccFlightAndVehicles
                         {
                             Firing = true;
                             RequestSerialization();
-                            if ((bool)SAVControl.GetProgramVariable("IsOwner"))
+                            bool IsOwner_b1 = (bool)SAVControl.GetProgramVariable("IsOwner"); if (IsOwner_b1) /* Avoiding slow copy */
                             { EntityControl.SendEventToExtensions("SFEXT_O_GunStartFiring"); }
                         }
                         GunAmmoInSeconds = Mathf.Max(GunAmmoInSeconds - DeltaTime, 0);
@@ -221,7 +221,7 @@ namespace SaccFlightAndVehicles
                         {
                             Firing = false;
                             RequestSerialization();
-                            if ((bool)SAVControl.GetProgramVariable("IsOwner"))
+                            bool IsOwner_b2 = (bool)SAVControl.GetProgramVariable("IsOwner"); if (IsOwner_b2) /* Avoiding slow copy */
                             { EntityControl.SendEventToExtensions("SFEXT_O_GunStopFiring"); }
                         }
                     }

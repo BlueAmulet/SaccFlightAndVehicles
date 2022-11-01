@@ -554,7 +554,7 @@ namespace SaccFlightAndVehicles
         {
             float speed = (float)SGVControl.GetProgramVariable("VehicleSpeed");
             WheelRotationSpeedRPS = speed / WheelCircumference;
-            if ((bool)SGVControl.GetProgramVariable("MovingForward")) { WheelRotationSpeedRPS = -WheelRotationSpeedRPS; }
+            bool MovingForward_b1 = (bool)SGVControl.GetProgramVariable("MovingForward"); if (MovingForward_b1) /* Avoiding slow copy */ { WheelRotationSpeedRPS = -WheelRotationSpeedRPS; }
             WheelRotation += WheelRotationSpeedRPS * 360f * Time.deltaTime;
             Quaternion newrot = Quaternion.AngleAxis(WheelRotation, Vector3.right);
             WheelVisual.localRotation = newrot;

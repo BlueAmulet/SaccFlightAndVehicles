@@ -191,7 +191,7 @@ namespace SaccFlightAndVehicles
             HookDown = true;
             VehicleAnimator.SetBool("hookdown", true);
 
-            if ((bool)SAVControl.GetProgramVariable("IsOwner"))
+            bool IsOwner_b1 = (bool)SAVControl.GetProgramVariable("IsOwner"); if (IsOwner_b1) /* Avoiding slow copy */
             {
                 EntityControl.SendEventToExtensions("SFEXT_O_HookDown");
             }
@@ -202,7 +202,7 @@ namespace SaccFlightAndVehicles
             VehicleAnimator.SetBool("hookdown", false);
             Hooked = false;
 
-            if ((bool)SAVControl.GetProgramVariable("IsOwner"))
+            bool IsOwner_b2 = (bool)SAVControl.GetProgramVariable("IsOwner"); if (IsOwner_b2) /* Avoiding slow copy */
             {
                 EntityControl.SendEventToExtensions("SFEXT_O_HookUp");
             }

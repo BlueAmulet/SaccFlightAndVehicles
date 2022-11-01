@@ -71,7 +71,7 @@ namespace SaccFlightAndVehicles
         {
             Vector3 RotInputs = (Vector3)SSVControl.GetProgramVariable("RotationInputs");
             float DeltaTime = Time.deltaTime;
-            if ((bool)SSVControl.GetProgramVariable("IsOwner"))
+            bool IsOwner_b1 = (bool)SSVControl.GetProgramVariable("IsOwner"); if (IsOwner_b1) /* Avoiding slow copy */
             {
                 if (InVR)
                 { OwnerRotationInputs = RotInputs; }//vr users use raw input

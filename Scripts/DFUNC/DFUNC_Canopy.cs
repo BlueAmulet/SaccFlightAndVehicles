@@ -115,7 +115,7 @@ namespace SaccFlightAndVehicles
         {
             CanopyBroken = false;
             CanopyAnimator.SetBool(AnimCanopyBroken, false);
-            if ((bool)SAVControl.GetProgramVariable("IsOwner")) { SendCustomEventDelayedFrames(nameof(SendCanopyRepair), 1); }
+            bool IsOwner_b1 = (bool)SAVControl.GetProgramVariable("IsOwner"); if (IsOwner_b1) /* Avoiding slow copy */ { SendCustomEventDelayedFrames(nameof(SendCanopyRepair), 1); }
             if (CanopyOpen) { CanopyClosing(); }
         }
         private void Update()
@@ -162,7 +162,7 @@ namespace SaccFlightAndVehicles
             CanopyOpen = true;
             CanopyAnimator.SetBool(AnimCanopyBool, true);
             SoundControl.SendCustomEvent("DoorOpen");
-            if ((bool)SAVControl.GetProgramVariable("IsOwner"))
+            bool IsOwner_b2 = (bool)SAVControl.GetProgramVariable("IsOwner"); if (IsOwner_b2) /* Avoiding slow copy */
             {
                 SendCustomEventDelayedFrames(nameof(SendCanopyOpened), 1);
             }
@@ -183,7 +183,7 @@ namespace SaccFlightAndVehicles
             CanopyTransitioning = true;
             SoundControl.SendCustomEventDelayedSeconds("DoorClose", CanopyCloseTime);
             SendCustomEventDelayedSeconds("SetCanopyTransitioningFalse", CanopyCloseTime);
-            if ((bool)SAVControl.GetProgramVariable("IsOwner"))
+            bool IsOwner_b3 = (bool)SAVControl.GetProgramVariable("IsOwner"); if (IsOwner_b3) /* Avoiding slow copy */
             {
                 SendCustomEventDelayedFrames(nameof(SendCanopyClosed), 1);
             }
@@ -221,7 +221,7 @@ namespace SaccFlightAndVehicles
             CanopyOpen = true;
             CanopyBroken = true;
             CanopyAnimator.SetBool(AnimCanopyBroken, true);
-            if ((bool)SAVControl.GetProgramVariable("IsOwner"))
+            bool IsOwner_b4 = (bool)SAVControl.GetProgramVariable("IsOwner"); if (IsOwner_b4) /* Avoiding slow copy */
             {
                 SendCustomEventDelayedFrames(nameof(SendCanopyBreak), 1);
             }

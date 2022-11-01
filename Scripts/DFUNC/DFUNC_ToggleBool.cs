@@ -167,7 +167,7 @@ namespace SaccFlightAndVehicles
             {
                 if (Time.time - (float)MasterToggle.GetProgramVariable("ToggleTime") > ToggleMinDelay)
                 {
-                    if ((bool)MasterToggle.GetProgramVariable("AnimOn"))
+                    bool AnimOn_b1 = (bool)MasterToggle.GetProgramVariable("AnimOn"); if (AnimOn_b1) /* Avoiding slow copy */
                     {
                         MasterToggle.SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, nameof(SetBoolOff));
                     }

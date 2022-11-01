@@ -84,7 +84,7 @@ namespace SaccFlightAndVehicles
                 Vector3 currentvel = (Vector3)SAVControl.GetProgramVariable("CurrentVel");
                 if (currentvel.magnitude < 2)
                 { currentvel = -Vector3.up * 2; }//straight down instead of spazzing out when moving very slow
-                if ((bool)SAVControl.GetProgramVariable("IsOwner"))
+                bool IsOwner_b1 = (bool)SAVControl.GetProgramVariable("IsOwner"); if (IsOwner_b1) /* Avoiding slow copy */
                 {
                     VelocityIndicator.position = transform.position + currentvel;
                 }

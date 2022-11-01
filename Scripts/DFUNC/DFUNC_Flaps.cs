@@ -55,7 +55,7 @@ namespace SaccFlightAndVehicles
             FlapsDragMulti -= 1f;
             FlapsLiftMulti -= 1f;
 
-            if ((bool)SAVControl.GetProgramVariable("AutoAdjustValuesToMass"))
+            bool AutoAdjustValuesToMass_b1 = (bool)SAVControl.GetProgramVariable("AutoAdjustValuesToMass"); if (AutoAdjustValuesToMass_b1) /* Avoiding slow copy */
             { FlapsExtraMaxLift *= ((Rigidbody)SAVControl.GetProgramVariable("VehicleRigidbody")).mass; }
 
             if (Dial_Funcon) Dial_Funcon.SetActive(Flaps);
@@ -118,7 +118,7 @@ namespace SaccFlightAndVehicles
                 }
                 if (Flaps)
                 {
-                    if ((bool)SAVControl.GetProgramVariable("PitchDown"))//flaps on, but plane's angle of attack is negative so they have no helpful effect
+                    bool PitchDown_b1 = (bool)SAVControl.GetProgramVariable("PitchDown"); if (PitchDown_b1) /* Avoiding slow copy *///flaps on, but plane's angle of attack is negative so they have no helpful effect
                     {
                         if (LiftApplied)
                         {
@@ -173,7 +173,7 @@ namespace SaccFlightAndVehicles
                 MaxLiftApplied = false;
             }
 
-            if ((bool)SAVControl.GetProgramVariable("IsOwner"))
+            bool IsOwner_b1 = (bool)SAVControl.GetProgramVariable("IsOwner"); if (IsOwner_b1) /* Avoiding slow copy */
             {
                 if (!InVR) { gameObject.SetActive(false); }//for desktop Users
                 EntityControl.SendEventToExtensions("SFEXT_O_FlapsOff");
@@ -201,7 +201,7 @@ namespace SaccFlightAndVehicles
                 MaxLiftApplied = true;
             }
 
-            if ((bool)SAVControl.GetProgramVariable("IsOwner"))
+            bool IsOwner_b2 = (bool)SAVControl.GetProgramVariable("IsOwner"); if (IsOwner_b2) /* Avoiding slow copy */
             {
                 gameObject.SetActive(true);//for desktop Users
                 EntityControl.SendEventToExtensions("SFEXT_O_FlapsOn");

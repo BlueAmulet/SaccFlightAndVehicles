@@ -50,7 +50,7 @@ namespace SaccFlightAndVehicles
                     if (!TriggerLastFrame)
                     {
                         TriggerLastFrame = true;
-                        if ((bool)SGVControl.GetProgramVariable("Grounded"))
+                        bool Grounded_b1 = (bool)SGVControl.GetProgramVariable("Grounded"); if (Grounded_b1) /* Avoiding slow copy */
                         {
                             Jump();
                         }

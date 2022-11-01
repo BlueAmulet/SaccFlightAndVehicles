@@ -212,7 +212,7 @@ namespace SaccFlightAndVehicles
             for (int x = 0; x < DisplaySmokeem.Length; x++)
             { DisplaySmokeem[x].enabled = smoking; }
             if (Dial_Funcon) Dial_Funcon.SetActive(smoking);
-            if ((bool)SAVControl.GetProgramVariable("IsOwner"))
+            bool IsOwner_b1 = (bool)SAVControl.GetProgramVariable("IsOwner"); if (IsOwner_b1) /* Avoiding slow copy */
             {
                 if (smoking)
                 { EntityControl.SendEventToExtensions("SFEXT_G_SmokeOn"); }
@@ -229,7 +229,7 @@ namespace SaccFlightAndVehicles
         }
         public override void OnPlayerJoined(VRCPlayerApi player)
         {
-            if ((bool)SAVControl.GetProgramVariable("IsOwner"))
+            bool IsOwner_b2 = (bool)SAVControl.GetProgramVariable("IsOwner"); if (IsOwner_b2) /* Avoiding slow copy */
             {
                 if (localSmoking)
                 {

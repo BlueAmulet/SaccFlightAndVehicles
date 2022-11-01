@@ -159,7 +159,7 @@ namespace SaccFlightAndVehicles
         }
         public void EngineOff()
         {
-            if ((bool)SAVControl.GetProgramVariable("_EngineOn"))
+            bool _EngineOn_b1 = (bool)SAVControl.GetProgramVariable("_EngineOn"); if (_EngineOn_b1) /* Avoiding slow copy */
             {
                 ToggleTime = Time.time - StartUpTime;
                 SAVControl.SetProgramVariable("_EngineOn", false);

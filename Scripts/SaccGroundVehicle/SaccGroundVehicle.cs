@@ -331,7 +331,7 @@ namespace SaccFlightAndVehicles
                     NumGroundedSteerWheels = 0;
                     for (int i = 0; i < SteerWheels.Length; i++)
                     {
-                        if ((bool)SteerWheels[i].GetProgramVariable("Grounded"))
+                        bool Grounded_b1 = (bool)SteerWheels[i].GetProgramVariable("Grounded"); if (Grounded_b1) /* Avoiding slow copy */
                         {
                             NumGroundedSteerWheels++;
                         }
@@ -339,14 +339,14 @@ namespace SaccFlightAndVehicles
                     NumGroundedWheels = NumGroundedSteerWheels;
                     for (int i = 0; i < DriveWheels.Length; i++)
                     {
-                        if ((bool)DriveWheels[i].GetProgramVariable("Grounded"))
+                        bool Grounded_b2 = (bool)DriveWheels[i].GetProgramVariable("Grounded"); if (Grounded_b2) /* Avoiding slow copy */
                         {
                             NumGroundedWheels++;
                         }
                     }
                     for (int i = 0; i < OtherWheels.Length; i++)
                     {
-                        if ((bool)OtherWheels[i].GetProgramVariable("Grounded"))
+                        bool Grounded_b3 = (bool)OtherWheels[i].GetProgramVariable("Grounded"); if (Grounded_b3) /* Avoiding slow copy */
                         {
                             NumGroundedWheels++;
                         }

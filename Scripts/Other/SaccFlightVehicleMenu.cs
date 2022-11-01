@@ -90,7 +90,7 @@ namespace SaccFlightAndVehicles
             {
                 if (SGVg)
                 {
-                    if ((bool)SGVg.GetProgramVariable("AllowMenuToToggleAutomatic"))
+                    bool AllowMenuToToggleAutomatic_b1 = (bool)SGVg.GetProgramVariable("AllowMenuToToggleAutomatic"); if (AllowMenuToToggleAutomatic_b1) /* Avoiding slow copy */
                     {
                         SGVg.SetProgramVariable("Automatic", auto);
                     }

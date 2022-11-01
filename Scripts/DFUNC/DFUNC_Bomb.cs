@@ -349,7 +349,7 @@ namespace SaccFlightAndVehicles
         {
             BombFire++;
             RequestSerialization();
-            if ((bool)SAVControl.GetProgramVariable("IsOwner"))
+            bool IsOwner_b1 = (bool)SAVControl.GetProgramVariable("IsOwner"); if (IsOwner_b1) /* Avoiding slow copy */
             { EntityControl.SendEventToExtensions("SFEXT_O_BombLaunch"); }
         }
         //CCIP calculation happens here

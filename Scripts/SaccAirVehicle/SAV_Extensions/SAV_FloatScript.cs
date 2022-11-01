@@ -138,7 +138,7 @@ namespace SaccFlightAndVehicles
         }
         public void SFEXT_G_EngineOff()
         {
-            if ((bool)SAVControl.GetProgramVariable("IsOwner"))
+            bool IsOwner_b1 = (bool)SAVControl.GetProgramVariable("IsOwner"); if (IsOwner_b1) /* Avoiding slow copy */
             {
                 if (HoverBike) { gameObject.SetActive(false); }
             }
