@@ -470,7 +470,7 @@ namespace SaccFlightAndVehicles
                     if (Taxiing)
                     { _rolling.volume = Mathf.Lerp(_rolling.volume, Mathf.Min((float)SAVControl.GetProgramVariable("Speed") * RollingVolCurve, RollingMaxVol), 3f * DeltaTime); }
                     else
-                    { _rolling.volume = Mathf.Lerp(_rolling.volume, Mathf.Min(0), 5f * DeltaTime); }
+                    { _rolling.volume = Mathf.Lerp(_rolling.volume, 0, 5f * DeltaTime); }
                 }
                 if ((Piloting || Passenger) && EngineStarted)
                 {
